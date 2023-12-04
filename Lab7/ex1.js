@@ -1,1 +1,0 @@
-require("./products.js");
