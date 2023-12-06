@@ -54,6 +54,8 @@ for (let i = 0; i < products.length; i++) {
 document.querySelector('.row').innerHTML += `
     <div class="col-md-6 product_card">
         <div>
+        <br>
+        <br>
         <h5 style="float: center;" class="product_name">${products[i].name}</h5>
         <h5 style="float: center;" class ="product_price">$${(products[i].price).toFixed(2)}</h5>
         </div>  
