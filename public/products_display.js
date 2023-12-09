@@ -79,7 +79,7 @@ document.querySelector('.row').innerHTML += `
         </tr>
         <tr>
         <!-- Sold Quantity -->
-        <td style="text-align: center; width: 35%;" id="total_sold${i}">Sold: ${products[i].total_sold}</td>
+        <td style="text-align: center; width: 35%;" id="total_sold${i}">Sold: ${products[i].qty_sold}</td>
         </tr>
         <tr>
         <!-- Error message -->

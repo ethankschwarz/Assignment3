@@ -112,6 +112,9 @@ header {
 }
 
 /* Button Styling */
+.login-btn {
+  text-align: center;
+}
 
 .purchase-btn, .login-btn, .register-btn { /*(Used Sal's Button Styling) */
   width: 80%;
