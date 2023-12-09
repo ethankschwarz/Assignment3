@@ -138,3 +138,12 @@ background-color: #1a4572;
 border-color: #164372;
 color: #FFF;
 }
+
+.buttons-container {
+  text-align: center;
+}
+
+
+.sm-button-highlight {
+  /* Add your existing styles for the button here */
+}

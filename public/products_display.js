@@ -2,19 +2,21 @@
 
 // get url parameters
 let params = (new URL(document.location)).searchParams;
+let error;
+let order = [];
 
 
 window.onload = function() {
     if (params.has('error')) {
         console.log("Error: No quantities selected.");
-        document.getElementById('errorMessage').innerHTML = "No quantities selected.";
+        document.getElementById('errorMessage').innerHTML = `<h2 class= "text-danger"> No quantities selected. </h2>`;
         setTimeout(() => {
             document.getElementById('errorMessage').innerHTML = "";
         }, 6000);
     } 
     else if (params.has('inputError')) {
         console.log("Input Error: Please fix errors before proceeding.");
-        document.getElementById('errorMessage').innerHTML = "Please fix errors before proceeding.";
+        document.getElementById('errorMessage').innerHTML = `<h2 class= "text-danger"> Please fix errors before proceeding.</h2>`;
         setTimeout(() => {
             document.getElementById('errorMessage').innerHTML = "";
         }, 6000);
@@ -46,7 +48,10 @@ window.onload = function() {
     }
 }
 
-
+//if there is an error submitted, then show the error text in errorDiv
+if(error == 'true'){
+    document.getElementById('errorDiv').innerHTML += `<h2 class="text-danger">Submission Error - Please Fix Quantities!</h2><br>`;
+}
 
 // Populate the DOM Form with the product details
 for (let i = 0; i < products.length; i++) {
@@ -74,7 +79,7 @@ document.querySelector('.row').innerHTML += `
         </tr>
         <tr>
         <!-- Sold Quantity -->
-        <td style="text-align: center; width: 35%;" id="qty_sold${i}">Sold: ${products[i].qty_sold}</td>
+        <td style="text-align: center; width: 35%;" id="total_sold${i}">Sold: ${products[i].total_sold}</td>
         </tr>
         <tr>
         <!-- Error message -->
@@ -117,7 +122,6 @@ function validateQuantity(quantity, availableQuantity) {
 };
 
 // CHECK INPUT BOXES AGAINST DATA VALIDATION FUNCTION
-// Remove leading 0's
 // Updated checkInputTextbox function
 function checkInputTextbox(textBox, availableQuantity) {
     let str = String(textBox.value);
@@ -132,6 +136,13 @@ function checkInputTextbox(textBox, availableQuantity) {
 
     // Validate the user input quantity using the updated validateQuantity function
     let errorMessage = validateQuantity(inputValue, availableQuantity);
+
+    // Route all other GET requests to serve static files from a directory named "public"
+
+app.all('*', function (request, response, next) {
+    //console.log(request.method + ' to ' + request.path);
+    next();
+ });
 
     // Check if there are any error messages and update the display
     let errorDisplay = document.getElementById(textBox.name + '_error');

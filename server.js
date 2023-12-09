@@ -348,8 +348,8 @@ function validateConfirmPassword(password, confirm_password) {
 
 // Validate Password Function
 function validatePassword(password) {
-    if (password.length < 10 || password.length > 16) {
-        registration_errors.password_error = "Password must be between 10 and 16 characters.";
+    if (password.length < 5 || password.length > 12) {
+        registration_errors.password_error = "Password must be between 5 and 12 characters.";
     } else if (/\s/.test(password)) {
         registration_errors.password_error = "Password cannot contain spaces.";
     }

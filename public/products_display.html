@@ -31,15 +31,16 @@
     </nav>
     <!---->
      <!--error message, id defined, that redirects user back to prodoucts if quanity is invalid--> 
+     <br>
      <div class="card">
       <br>
       <div class="col text-center">
-          <div id="errorDiv"></div>
+          <div id="errorMessage"></div>
       </div>
     <!---->
 
     <!--Button to carry over quantities to invoice.html using POST method-->
-    <form action="/process_purchase" method="POST" id="purchase_form" id="purchase_form">
+    <form action="/process_purchase" method="POST" id="purchase_form">
       <h1><span id="top_title"></span></h1>
       <div>
         <div id="user-carry"></div>
@@ -52,7 +53,11 @@
             </div>
           </main>
       </div>
+      <br>
+      <br>
            <footer>
+            <br>
+            <br>
                <input type="submit" value="Purchase" class="purchase-btn">
           </footer>
         
