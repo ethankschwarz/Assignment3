@@ -1,3 +1,4 @@
+//Ethan Schwarz - Assignment 2
 //server.js
 
 // Importing the Express.js framework 
@@ -30,7 +31,6 @@ app.get("/products.js", function (request, response, next) {
 app.use(express.urlencoded({ extended: true }));
 
 
-
 //function to validate the quantity
 function validateQuantity(quantity, availableQuantity) {
     let errors = [];
@@ -53,13 +53,8 @@ function validateQuantity(quantity, availableQuantity) {
     return errors;
 }
 
+//Added for Assignment 2
 
-
-
-
-
-
-//------------------------------Assigntment 2-----------------------------//
 // Declare a variable to store user data
 let user_data;
 
@@ -87,11 +82,12 @@ if (fs.existsSync(filename)){
 // Declare a temporary variable to store user inputs
 let temp_user = {}; // temp storage for user inputs to be passed along
 
-/*
+
 for (let i in products){
     products.forEach((prod, i) => {prod.qty_sold = 0});
 }
-*/                         
+
+                  
 
 
 //===========================App Post Purchase Form==========================//
@@ -130,11 +126,6 @@ if (has_qty == false && Object.keys(errorObject).length == 0) {
 
         console.log(temp_user);
 
-        /*
-        //update quantity sold and available
-        products[i].qty_sold += Number(qty);
-        products[i].qty_available = products[i].qty_available - qty;
-        */
 
     }
     //redirect to invoice page
@@ -158,15 +149,7 @@ else {
 }
 });
     
-
-
-
-
-
-
-
-
-//===========================App Post Login Form==========================//
+//login FORM
 // This code block defines a route handler for the POST request to the "/process_login" endpoint.
 app.post("/process_login", function (request, response) {
     // Retrieve the data from the request body
@@ -223,14 +206,8 @@ app.post("/process_login", function (request, response) {
     response.redirect (`./login.html?${params.toString()}`);
 });
 
-
-
-
-
-
-
-//===========================App Post Continue Shoppin==========================//
-// This code block handles a POST request to the '/continue_shopping' endpoint of the app.
+//Continue Shopping
+//POST request to the '/continue_shopping' endpoint of the app.
 
 app.post("/continue_shopping", function (request, response) {
     // Create a new URLSearchParams object with the 'temp_user' parameter.
@@ -239,11 +216,6 @@ app.post("/continue_shopping", function (request, response) {
     // Redirect the response to the '/products_display.html' endpoint with the query parameters from the 'params' object.
     response.redirect(`/products_display.html?${params.toString()}`);
 })
-
-
-
-
-
 
 //===========================App Post Purchase Logout==========================//
 app.post("/purchase_logout", function (request, response) {
@@ -254,7 +226,6 @@ app.post("/purchase_logout", function (request, response) {
         // Decrease the available quantity of the current product by the number specified in the temp_user object
         products[i].qty_available = products[i].qty_available - Number(temp_user[`qty${[i]}`]);
     }
-
     // Write the updated products array to the products.json file
     fs.writeFile(__dirname + '/products.json', JSON.stringify(products), 'utf-8', (error) => {
         if (error) {
@@ -262,7 +233,7 @@ app.post("/purchase_logout", function (request, response) {
             console.log('error updating products', error);
         } else {
             // If the file is written successfully, log a success message
-            console.log('File written successfully. Products are updated.');
+            console.log('Products are updated.');
         }
     });
 
@@ -274,14 +245,7 @@ app.post("/purchase_logout", function (request, response) {
     response.redirect('./products_display.html');
 })
 
-
-
-
-
-
-
-//==============================App Post Register Form==========================//
-//Declare registration errors
+////Declare registration errors
 let registration_errors = {};
 
 app.post("/process_register", function (request, response) {
@@ -348,8 +312,8 @@ function validateConfirmPassword(password, confirm_password) {
 
 // Validate Password Function
 function validatePassword(password) {
-    if (password.length < 5 || password.length > 12) {
-        registration_errors.password_error = "Password must be between 5 and 12 characters.";
+    if (password.length < 10 || password.length > 16) {
+        registration_errors.password_error = "Password must be between 10 and 16characters.";
     } else if (/\s/.test(password)) {
         registration_errors.password_error = "Password cannot contain spaces.";
     }

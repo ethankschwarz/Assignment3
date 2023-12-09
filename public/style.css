@@ -127,7 +127,7 @@ header {
   letter-spacing: 0.2em;
 }
 
-.purchase-btn .login-btn, .register-btn {
+.purchase-btn, .login-btn, .register-btn {
   
   color: #FFF;
   background-color: #26537f;
@@ -149,4 +149,8 @@ color: #FFF;
 
 .sm-button-highlight {
   /* Add your existing styles for the button here */
+}
+
+.link_reg {
+  text-align: center;
 }

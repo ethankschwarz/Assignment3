@@ -41,7 +41,7 @@ window.onload = function() {
         }
     }
     if (params.has('name')) {
-        document.getElementById('helloMsg').innerHTML = `Welcome back ${params.get('name')}! Ready to buy more shoes?`;
+        document.getElementById('helloMsg').innerHTML = `Welcome back ${params.get('name')}!`;
         for (let i in products) {
             qty_form[`qty${i}`].value = params.get(`qty${i}`);
         }
@@ -68,7 +68,7 @@ document.querySelector('.row').innerHTML += `
         <div style="height: 90px;">
         <table style="width: 100%; text-align: center; font-size: 18px;" id="product_table">
         <tr>
-        <!-- Shoes available quantity for the product -->
+        <!-- Towels available -->
         <td style=";text-align: center; width: 20%;  ">Shoes Available: ${products[i].qty_available}</td>
         <!-- Input textbox for quantity -->
         <td style="text-align: center; width: 20%;" rowspan="2">
@@ -91,7 +91,7 @@ document.querySelector('.row').innerHTML += `
     `;
 }
 
-// PERFORM CLIENT-SIDE DATA VALIDATION
+// client side validation
 
 // Updated validateQuantity function
 function validateQuantity(quantity, availableQuantity) {
@@ -121,7 +121,7 @@ function validateQuantity(quantity, availableQuantity) {
     return errors; // Return the array of errors
 };
 
-// CHECK INPUT BOXES AGAINST DATA VALIDATION FUNCTION
+// CHECK Quantities
 // Updated checkInputTextbox function
 function checkInputTextbox(textBox, availableQuantity) {
     let str = String(textBox.value);
