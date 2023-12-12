@@ -1,30 +1,23 @@
-//login.js
-let params = (new URL(document.location)).searchParams;
 
-//when window loads, perform following:
-window.onload = function() {
-    if (params.has('loginError')) {
-        document.getElementById('errorMessage').innerText = params.get('loginError');
-        
+let params = (new URL(document.location)).searchParams;
+let order = [];
+
+// For each prod, push the value to the array
+params.forEach((value, key) => {
+    if (key.startsWith('prod')) {
+        order.push(parseInt(value));
     }
-    document.getElementById('email').value = params.get('email');
+});
+let error = params.get('error');
+//gets the error from the url and checks to see if its empty or null, if not, fill in the message
+if(error !== null && error !== ''){
+    document.getElementById('errorMessages').innerHTML += `<div id="errorMessages" class="alert alert-danger">${error}</div>`;
 }
 
-
-// Get references to the password input and the show password checkbox
-let passwordInput = document.getElementById('password');
-let showPasswordCheckbox = document.getElementById('showPasswordCheckbox');
-
-// Add an event listener to the checkbox to toggle password visibility
-showPasswordCheckbox.addEventListener('change', function () {
-    passwordInput.type = this.checked ? 'text' : 'password';
-});
-
-params.forEach((value, key) => {
-    const productInput = document.createElement("input");
-    productInput.type = "hidden";
-    productInput.name = key;
-    productInput.value = value;
-
-    document.getElementById("product-inputs").appendChild(productInput);
-});
+//get the username from the url
+let username = params.get('username');
+//make it sticky
+document.getElementById('username').value = username;
+// Set the value of the hidden input field 
+document.getElementById('orderInput').value = JSON.stringify(order);
+document.getElementById('orderReg').value = JSON.stringify(order);

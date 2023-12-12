@@ -1,43 +1,97 @@
 [
         {  
-        "name": "Sunset Cliffs",  
+        "type":"card",
+        "card": "Sunset Cliffs",  
         "price": 24.00,  
         "image": "/images/sunnysd.jpeg",
         "qty_available": 90
+        
         },
 
-        {  
-        "name": "Soledad Sunrise",  
+        { 
+        "type": "card",
+        "card": "Soledad Sunrise",  
         "price": 25.00,  
         "image": "/images/torrey.jpeg",
         "qty_available": 80
         },
 
         {  
-        "name": "Del Cerro Daisy",  
+        "type": "card",
+        "card": "Del Cerro Daisy",  
         "price": 30.00,  
         "image": "/images/plumeria.jpeg",
         "qty_available": 100
         },
 
         {  
-        "name": "Windansea Whaleshark",  
+        "type": "card",
+        "card": "Windansea Whaleshark",  
         "price": 30.00,  
         "image": "/images/coveshark.jpeg",
         "qty_available": 50
         },
         
         {  
-        "name": "East County Cubed",  
+        "type": "card",
+        "card": "East County Cubed",  
         "price": 28.00,  
         "image": "/images/cube.jpeg",
         "qty_available": 100
         },
 
         {  
-        "name": "Ganar Green ",  
+        "type": "card",
+        "card": "Ganar Green ",  
         "price": 30.00,  
         "image": "/images/bonita.jpeg",
         "qty_available": 100
+        },
+      
+        {
+          "type":"box",
+          "card": "Beige Break",
+          "price": 14.00,
+          "image": "/images/2beigeponcho.jpeg",
+          "qty_available": 40
+        },
+        
+        {
+          "type":"box",
+          "card": "Pacifc Beach Blue",
+          "price": 14.00,
+          "image": "/images/2blueponcho.jpeg",
+          "qty_available": 35
+        },
+
+        {
+          "type":"box",
+          "card": "Grinch Green ",
+          "price": 14.00,
+          "image": "/images/2greenponcho.jpeg",
+          "qty_available": 20
+        },
+        {
+          "type":"box",
+          "card": "Steele Canyon",
+          "price": 14.00,
+          "image": "/images/2greyponcho.jpeg",
+          "qty_available": 50
+        },
+        {
+          "type":"box",
+          "card": "Garibaldi",
+          "price": 50.00,
+          "image": "./images/2salmonponcho.jpeg",
+          "qty_available": 50
+        },
+        {
+          "type":"box",
+          "card": "Marine Street",
+          "price": 50.00,
+          "image": "./images/2teelponcho.jpeg",
+          "qty_available": 40
         }
+        
       ]
+
