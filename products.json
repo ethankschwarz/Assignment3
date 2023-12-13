@@ -10,7 +10,7 @@
 
         { 
         "type": "card",
-        "card": "Soledad Sunrise",  
+        "card": "Mt. Helix Halo",  
         "price": 25.00,  
         "image": "/images/torrey.jpeg",
         "qty_available": 80
@@ -18,7 +18,7 @@
 
         {  
         "type": "card",
-        "card": "Del Cerro Daisy",  
+        "card": "Point Loma Plumeria",  
         "price": 30.00,  
         "image": "/images/plumeria.jpeg",
         "qty_available": 100
@@ -50,8 +50,8 @@
       
         {
           "type":"box",
-          "card": "Beige Break",
-          "price": 14.00,
+          "card": "Beige Beach Break",
+          "price": 60.00,
           "image": "/images/2beigeponcho.jpeg",
           "qty_available": 40
         },
@@ -59,38 +59,85 @@
         {
           "type":"box",
           "card": "Pacifc Beach Blue",
-          "price": 14.00,
+          "price": 60.00,
           "image": "/images/2blueponcho.jpeg",
           "qty_available": 35
         },
 
         {
           "type":"box",
-          "card": "Grinch Green ",
-          "price": 14.00,
+          "card": "Grinch Green",
+          "price": 60.00,
           "image": "/images/2greenponcho.jpeg",
           "qty_available": 20
         },
         {
           "type":"box",
-          "card": "Steele Canyon",
-          "price": 14.00,
+          "card": "Steele Canyon Silver",
+          "price": 60.00,
           "image": "/images/2greyponcho.jpeg",
           "qty_available": 50
         },
         {
           "type":"box",
-          "card": "Garibaldi",
-          "price": 50.00,
-          "image": "./images/2salmonponcho.jpeg",
+          "card": "Golden Garibaldi",
+          "price": 65.00,
+          "image": "/images/2salmonponcho.jpeg",
           "qty_available": 50
         },
         {
           "type":"box",
-          "card": "Marine Street",
-          "price": 50.00,
-          "image": "./images/2teelponcho.jpeg",
+          "card": "Midnight Marine Street",
+          "price": 60.00,
+          "image": "/images/2teelponcho.jpeg",
           "qty_available": 40
+        },
+        {
+          "type":"mat",
+          "card": "Laguna Beach Blue",
+          "price": 80.00,
+          "image": "/images/1bagwhiteblue.jpeg",
+          "qty_available": 20
+        },
+
+        {
+          "type":"mat",
+          "card": "Bonita Beige",
+          "price": 80.00,
+          "image": "/images/1beigebag.jpeg",
+          "qty_available": 15
+        },
+
+        {
+          "type":"mat",
+          "card": "Fiesta Island Fire",
+          "price": 80.00,
+          "image": "/images/1orangebag.jpeg",
+          "qty_available": 10
+        },
+
+        {
+          "type":"mat",
+          "card": "Carlsbad Cardinal",
+          "price": 80.00,
+          "image": "/images/1redbag.jpeg",
+          "qty_available": 15
+        },
+
+        {
+          "type":"mat",
+          "card": "Encinitas Eggshell",
+          "price": 80.00,
+          "image": "/images/1whitepolkabag.jpeg",
+          "qty_available": 20
+        },
+
+        {
+          "type":"mat",
+          "card": "Blacks Beach Break",
+          "price": 80.00,
+          "image": "/images/1yellowbag.jpeg",
+          "qty_available": 20
         }
         
       ]

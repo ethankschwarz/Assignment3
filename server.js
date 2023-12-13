@@ -1,3 +1,7 @@
+//Ethan Schwarz
+//Assignment 3 
+//Server.js (kill me)
+
 // Importing the Express.js framework 
 const express = require('express');
 // Create an instance of the Express application called "app"
@@ -97,7 +101,7 @@ app.get('/invoice.html', function (request, response) {
     );
   }
 });
-//now we can use public
+//use public
 app.use(express.static(__dirname + '/public'));
 
 //this is called when someone wants to login on login.html
@@ -121,12 +125,17 @@ app.post('/login', function (request, response) {
   if (typeof user_reg_data[username_input.toLowerCase()] !== 'undefined') {
     storedUserData = user_reg_data[username_input.toLowerCase()];
 
-    // Verify the provided password against the stored hash and salt
-    const passwordMatch = verifyPassword(
-      password_input,
-      storedUserData.salt,
-      storedUserData.password
-    );
+    // Verify the provided password against the stored plain text password
+    const {salt, hash} = hashPassword(password_input);
+const passwordMatch = verifyPassword(
+    hash, 
+    storedUserData.password
+  );
+  
+  // Assuming storedUserData.password contains the plain text password of the user
+  function verifyPassword(inputPassword, storedPassword) {
+    return inputPassword === storedPassword;
+  }
 
     //old disregard
     if (passwordMatch) {
@@ -249,6 +258,7 @@ app.post('/register', function (request, response) {
       fullName: request.body.fullName,
       //email: request.body.email.toLowerCase(), // Store email in lowercase
     };
+    
     loginUsers.push(new_user);
     // Write user data to file (you may want to use async writeFile for better performance)
     fs.writeFileSync(filename, JSON.stringify(user_reg_data), 'utf-8');
@@ -294,7 +304,7 @@ app.post("/complete_purchase", function (request, response) {
 
   let mailOptions = {
 		// The from should be your email, or the email of your store
-		from: 'Reyns_Cards@shop.com',
+		from: 'Ethan_Kuapula@shop.com',
 		to: `${request.cookies[`username`]}`,
 		subject: `[Ethan's Kuapula Store] Thank You For Your Order!`,
 		html: invoice_str
@@ -512,6 +522,7 @@ function logOut(request, response){
 
 }
 
+//COME BACK TO THIS
 
 //generate the salt and hash for the password provided, if someone wants to crack it they need both the hash and the salt
 function hashPassword(password) {
@@ -520,11 +531,11 @@ function hashPassword(password) {
   return { salt, hash };
 }
 
-// Function to verify a password against a hash and salt
+/* Function to verify a password against a hash and salt
 function verifyPassword(password, salt, storedHash) {
-  const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
-  return hash === storedHash;
-}
+    const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
+    return hash === storedHash;
+  }*/
 
 //this is derived from invoice.js, but turned into a way that can generate a simple table for the email
 function generateHTMLInvoice(order) {
@@ -570,7 +581,6 @@ function generateHTMLInvoice(order) {
       html += `<tr><td colspan="3">Tax</td><td colspan="2">$${taxAmount.toFixed(2)}</td></tr>`;
       html += `<tr><td colspan="3">Shipping</td><td colspan="2">$${shipping.toFixed(2)}</td></tr>`;
       html += `<tr><td colspan="3">Total</td><td colspan="2">$${total.toFixed(2)}</td></tr>`;
-  
 
   html += "</table>";
   return html;

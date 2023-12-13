@@ -82,8 +82,6 @@ header {
   z-index: 1000; 
 }
 
-/*background video on index.html (Used Chat gpt to format video into website)*/
-
 
 #myImage {
   width: 100%;
@@ -147,10 +145,6 @@ color: #FFF;
 }
 
 
-.sm-button-highlight {
-  /* Add your existing styles for the button here */
-}
-
 .link_reg {
   text-align: center;
 }
@@ -165,7 +159,7 @@ color: #FFF;
 .imgMat{
 
   width: 300px;
-  height: 300px;
+  height: 400px;
 }
 
 .imgBox{
@@ -207,4 +201,9 @@ color: #FFF;
   background-color: #0056b3;
   border-color: #0056b3;
   color: #FFF;
+}
+
+body.invoice-body {
+  background-image: none;
+  background-color: #ffffff;
 }

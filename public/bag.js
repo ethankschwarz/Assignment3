@@ -2,23 +2,23 @@
 let params = (new URL(document.location)).searchParams;
 let error;
 
-//shows type
-let type = 'box';
+//type this sells
+let type = 'mat';
 
 //get if there was an error before
 error = params.get('error');
 
-
-let storeName = 'poncho';
+//name of store for redirect
+let storeName = 'bag';
 document.getElementById('storeName').value += storeName;
-//gets cookie params
+//cookie params
 let signin = decodeURIComponent(getCookieValue('signIn'));
 let username = decodeURIComponent(getCookieValue('username')); // Replace with your logic to get the username
 let fullName = decodeURIComponent(getCookieValue('fName'));
 
+//sign in replace to sign out
 document.addEventListener("DOMContentLoaded", function() {
     
-
     if (signin == 'true') {
         // Replace the Sign In link with a cute icon and the username
         document.getElementById("loginPlaceholder").innerHTML = 
@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
             </form>`;
     }
 });
-//gets more params, if null or 0, fill them in
+
+//cookie params for product, if 0, full in
 let cards = decodeURIComponent(getCookieValue('card'));
 let mat = decodeURIComponent(getCookieValue('mat'));
 let boxes = decodeURIComponent(getCookieValue('box'));
@@ -44,10 +45,7 @@ if(mat == 'null'){
     console.log('cardsBad');
     mat = '0,0,0,0,0,0';
 }
-
-console.log(cards + ","+ mat);
-console.log(mat);
-//append string
+//append strings create array
 let totalString = boxes + ","+cards+","+mat;
 let arrayString = totalString.split(",");
 var order = arrayString.map(function(item) {
@@ -95,14 +93,7 @@ if(overflow == '' || (overflow !== 'null' && overflow !== null && typeof(overflo
 }
 
 /*
-For every product in the array:
-    Create a card with the image on top
-    Fill the card body with the title of the card found in products[i], so with price, aval, and total sold
-
-    Create an input that oninput validates the quantity, a placeholder value of 0 
-        The initial value found in the box can be populated if there is anything but 0 or undefined in order array for that position
-    Create an area to define errors
-    Run the validation to populate errors just incase an initial value is passed
+DISPLAYS PRODUCT TABLE
 */
 for (let i = 0; i < products.length; i++) {
     if(type == products[i]['type']){
@@ -110,7 +101,7 @@ for (let i = 0; i < products.length; i++) {
         `<div class="col-md-6 product_card mb-4">
         <div class="card">
             <div class="text-center">
-                <img src="${products[i].image}" class="card-img-top border-top imgBox" alt="Product Image">
+                <img src="${products[i].image}" class="card-img-top border-top imgMat" alt="Product Image">
             </div>
             <div class="card-body">
                 <h5 class="card-title">${products[i].card}</h5>
