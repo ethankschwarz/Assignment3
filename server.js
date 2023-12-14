@@ -1,50 +1,43 @@
-//Ethan Schwarz
+//Ethan Schwarz (helped by Anthony Lee and Reyn + Marina Cleavenger)
 //Assignment 3 
-//Server.js (kill me)
+//Server.js 
 
-// Importing the Express.js framework 
+// Importing required modules( cookies, sessions, express, etc.)
 const express = require('express');
-// Create an instance of the Express application called "app"
-// app will be used to define routes, handle requests, etc
 const app = express();
 const fs = require('fs');
-//gets crypto for password
 const crypto = require('crypto');
-app.use(express.urlencoded({ extended: true }));
-//reads rockyou.txt for compromised passwords
-//const DirtyrockYouPasswords = fs.readFileSync('rockyou.txt', 'utf-8').split('\n');
-//const rockYouPasswords = DirtyrockYouPasswords.map(str => str.replace(/\r/g, ''));
-//grabs everything from public
-
-//using cookies and sessions
 let cookieParser = require('cookie-parser');
-app.use(cookieParser());
-
 let session = require('express-session');
-app.use(session({ secret: "MySecretKey", resave: true, saveUninitialized: true }));
-//using nodemailer
-//const nodemailer = require('nodemailer');
 
-// Create a transporter object using the default SMTP transport
-/*let transporter = nodemailer.createTransport({
+//Setting up middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(session({ secret: "MySecretKey", resave: true, saveUninitialized: true }));
+
+//Creating a nodemailer transporter ovject
+const nodemailer = require('nodemailer');
+
+// Create a transporter object using the default SMTP transport (Helped by Anthony Lee)
+let transporter = nodemailer.createTransport({
   host: "mail.hawaii.edu",
   port: 25,
-  secure: false, // use TLS
+  secure: false, 
   tls: {
   // do not fail on invalid certs
   rejectUnauthorized: false
   }
-});*/
+});
 
+//Initializing user data
 let filename = __dirname + '/user_data.json';
-
 let user_reg_data;
-
 //this is the array that tracks user login status
 let loginUsers = [];
 //array that tracks sessionIDs of logged in users.
 let loginRequests = [];
 
+//Reading user data from file
 if (fs.existsSync(filename)) {
   let data = fs.readFileSync(filename, 'utf-8');
   user_reg_data = JSON.parse(data);
@@ -303,7 +296,7 @@ app.post("/complete_purchase", function (request, response) {
 		// The from should be your email, or the email of your store
 		from: 'Ethan_Kuapula@shop.com',
 		to: `${request.cookies[`username`]}`,
-		subject: `[Ethan's Kuapula Store] Thank You For Your Order!`,
+		subject: `[Ethan's Kuapula Store] Thank You For Your Order!`, //point recovery
 		html: invoice_str
 	};
 
@@ -519,7 +512,7 @@ function logOut(request, response){
 
 }
 
-//COME BACK TO THIS
+//COME BACK TO THIS  
 
 function sha256(inputPass) {
     const hash = crypto.createHash('sha256');
