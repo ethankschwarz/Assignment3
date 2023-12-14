@@ -65,9 +65,6 @@ let products = rawproducts.slice().sort((a, b) => {
   return 0;
 });
 
-app.get('/', function (res, res) {
-    test("password123", "password123");
-})
 
 // Define a route for handling a GET request to a path that matches "./products.js"
 app.get("/products.js", function (request, response, next) {
