@@ -1,0 +1,41 @@
+CART INFO
+
+// Step 1: Clear User Session on Sign Out
+function handleSignOut():
+    destroyUserSession()
+    redirect('/index.html')
+
+// Step 2: Preserve Cart Information
+function handleCompletePurchase():
+    completePurchase()
+    destroyUserSession()
+    redirect('/index.html?thankYou=true')
+
+// Step 3: Check Cart Information on Access
+function handleUserAccess():
+    cartInfo = getCartInformationFromCookies()
+    renderPage('index', { cartInfo: cartInfo })
+
+// Example Usage
+if (userSignsOut):
+    handleSignOut()
+
+if (userCompletesPurchase):
+    handleCompletePurchase()
+
+if (userAccessesSite):
+    handleUserAccess()
+
+BEING ABLE TO GO TO LINKS PRODUCTS AFTER PURCHASING AND SIGNED OUT
+function handleCompletePurchase(request, response):
+    # ... (rest of the code for complete_purchase)
+
+    # Do not clear cookies and log out
+    # response.clearCookie('mat');
+    # response.clearCookie('box');
+    # response.clearCookie('card');
+    # logOut(request, response);
+
+    # Redirect to a page where users can continue shopping
+    response.redirect('/continue_shopping.html');
+end function
