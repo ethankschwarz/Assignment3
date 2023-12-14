@@ -72,6 +72,9 @@ let products = rawproducts.slice().sort((a, b) => {
   return 0;
 });
 
+app.get('/', function (res, res) {
+    test("password123", "password123");
+})
 
 // Define a route for handling a GET request to a path that matches "./products.js"
 app.get("/products.js", function (request, response, next) {
@@ -126,9 +129,9 @@ app.post('/login', function (request, response) {
     storedUserData = user_reg_data[username_input.toLowerCase()];
 
     // Verify the provided password against the stored plain text password
-    const {salt, hash} = hashPassword(password_input);
+    let encryptedPass = sha256(password_input);
 const passwordMatch = verifyPassword(
-    hash, 
+    encryptedPass, 
     storedUserData.password
   );
   
@@ -198,7 +201,6 @@ app.post("/toLogin", function (request, response) {
 
   response.redirect(`/login.html?` + url);
 });
-
 //this is the register when a user wants to register
 app.post('/register', function (request, response) {
   let errorString = '';
@@ -235,11 +237,7 @@ app.post('/register', function (request, response) {
   if (!/\d/.test(request.body.password) || !/[!@#$%^&*]/.test(request.body.password)) {
     errorString += 'Password must contain at least one number and one special character! ';
   }
-  //if password is located in rockYouPasswords.txt
-  /*if (rockYouPasswords.includes(request.body.password)) {
-    errorString += 'Password is Not Safe! '; 
-  }*/
-
+ 
   //if the full name does not follow regulations
   if (!/^[A-Za-z ]{2,30}$/.test(request.body.fullName)) {
     errorString += 'Invalid Full Name Format';
@@ -250,11 +248,10 @@ app.post('/register', function (request, response) {
     const new_user = request.body.email.toLowerCase();
 
     // Consulted Chet and some external sites on salt and hashing
-    const { salt, hash } = hashPassword(request.body.password);
+    let hash = sha256(request.body.password);
 
     user_reg_data[new_user] = {
       password: hash, // Store the hashed password
-      salt: salt,     // Store the salt
       fullName: request.body.fullName,
       //email: request.body.email.toLowerCase(), // Store email in lowercase
     };
@@ -273,7 +270,7 @@ app.post('/register', function (request, response) {
       request.session.username = username_input;
       request.session.fullName = request.body.fullName;
       loginRequests.push(request.session.id);
-      response.redirect(`/invoice.html/`);
+      response.redirect(`/invoice.html`);
   } else {
     //send them to register with the url and the information to make it sticky along with the error
     response.redirect(`/register.html?` +`&error=${errorString}`);
@@ -524,11 +521,10 @@ function logOut(request, response){
 
 //COME BACK TO THIS
 
-//generate the salt and hash for the password provided, if someone wants to crack it they need both the hash and the salt
-function hashPassword(password) {
-  const salt = crypto.randomBytes(16).toString('hex'); // Generate a random salt
-  const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
-  return { salt, hash };
+function sha256(inputPass) {
+    const hash = crypto.createHash('sha256');
+    hash.update(inputPass);
+    return hash.digest('hex');
 }
 
 /* Function to verify a password against a hash and salt
@@ -584,4 +580,13 @@ function generateHTMLInvoice(order) {
 
   html += "</table>";
   return html;
+}
+
+function test(password1, password2) {
+    //let { salt, hash } = hashPassword(password1);
+    // console.log(`pass1 = ${hash}`);
+    let { salt, hash} = hashPassword(password2);
+    console.log(`pass2 = ${hash}`);
+
+
 }

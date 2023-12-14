@@ -18,7 +18,7 @@ let fullName = decodeURIComponent(getCookieValue('fName'));
 
 document.addEventListener("DOMContentLoaded", function() {
     
-
+    
     if (signin == 'true') {
         // Replace the Sign In link with a cute icon and the username
         document.getElementById("loginPlaceholder").innerHTML = 
