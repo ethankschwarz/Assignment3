@@ -12,11 +12,6 @@ let params = (new URL(document.location)).searchParams;
         //initializes empty order array
 
 //for each prod, push the value to the array
-/*params.forEach((value,key) => {
-    if (key.startsWith('prod')) {
-            order.push(parseInt(value));
-        }
-});*/
 
 //Sets the parameters from the url
 
