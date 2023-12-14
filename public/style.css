@@ -114,7 +114,8 @@ header {
   text-align: center;
 }
 
-.purchase-btn, .login-btn, .register-btn { /*(Used Sal's Button Styling) */
+/*(Used Sal's Button Styling) (Past assignment 2) */
+.purchase-btn, .login-btn, .register-btn { 
   width: 80%;
   height: 50px; 
   border-radius: 50px; 
@@ -149,6 +150,7 @@ color: #FFF;
   text-align: center;
 }
 
+/*Resizes products on invoice html and also on products pages*/
 
 .card-img-top{
 
@@ -186,6 +188,9 @@ color: #FFF;
 
 
 }
+
+/*Used from past assignment*/
+
 .text-button {
   
   background: none;
@@ -197,13 +202,24 @@ color: #FFF;
   font-family: inherit; /* to inherit font styles from the body */
   font-size: inherit;
 }
+
+/*Used from past assignment*/
+
 .btn-outline-primary:hover {
   background-color: #0056b3;
   border-color: #0056b3;
   color: #FFF;
 }
 
+/*Deletes the background image when you get to Invoice.html*/
+
 body.invoice-body {
   background-image: none;
   background-color: lightgrey;
+}
+
+/*Centers "Click the 'Buy Now' Button To See our Products (index.html)*/
+.centered-text {
+  text-align: center;
+  margin-top: 15px; 
 }

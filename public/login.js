@@ -1,23 +1,31 @@
-
+//Ethan Schwarz
+// Extract parameters from the URL
 let params = (new URL(document.location)).searchParams;
+
+// Array to store ordered product values
 let order = [];
 
-// For each prod, push the value to the array
+// Iterate over parameters, identify products, and push values to the order array
 params.forEach((value, key) => {
     if (key.startsWith('prod')) {
         order.push(parseInt(value));
     }
 });
+
+// Get error message from URL parameters
 let error = params.get('error');
-//gets the error from the url and checks to see if its empty or null, if not, fill in the message
-if(error !== null && error !== ''){
+
+// Check if there is an error message and display it in the 'errorMessages' element
+if (error !== null && error !== '') {
     document.getElementById('errorMessages').innerHTML += `<div id="errorMessages" class="alert alert-danger">${error}</div>`;
 }
 
-//get the username from the url
+// Get the username from the URL
 let username = params.get('username');
-//make it sticky
+
+// Make the username sticky by setting its value in the corresponding input field
 document.getElementById('username').value = username;
-// Set the value of the hidden input field 
+
+// Set the value of hidden input fields with the JSON stringified order array
 document.getElementById('orderInput').value = JSON.stringify(order);
 document.getElementById('orderReg').value = JSON.stringify(order);

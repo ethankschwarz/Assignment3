@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Meta information -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store Page</title>
-    <!--USING BOOTSTRAP 4 -->
+
+    <!-- Bootstrap 4 -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -14,26 +17,30 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Include custom JavaScript and CSS files -->
     <script type="text/javascript" src="./products.js"></script>
-    <link rel = "stylesheet" href ="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
-    <!--Web Head-->
+    <!-- HEADER -->
     <nav class="navbar navbar-expand-lg navbar-lightblue bg-light">
+        <!-- Brand and navigation toggle button -->
         <a class="navbar-brand" href="./index.html">Ethan's Kuapula Store</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
+        <!-- Navigation links -->
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="./index.html">Home</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Products
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -43,60 +50,60 @@
                     </div>
                 </li>
             </ul>
+
+            <!-- Cart and Sign In links -->
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="./invoice.html" id = "cartText">View Cart</a>
+                <a class="nav-item nav-link" href="./invoice.html" id="cartText">View Cart</a>
                 <div id="loginPlaceholder">
                     <a class="nav-item nav-link" href="./login.html" id="signInLink">Sign In</a>
                 </div>
             </div>
         </div>
     </nav>
-    
-        
-    <!--Modal for thank you message--> 
-    
-      <!--Defines the WelcomeDiv and percyImage areas, nothing shown if not signed in-->
-      <br>
-      <br>
+
+    <!-- Welcome and Error sections -->
+    <div class="container">
         <div class="col text-center">
+            <!-- Defines the WelcomeDiv area; nothing is shown if not signed in -->
             <div id="WelcomeDiv"></div>
         </div>
-        </div>
-       
-    </div>
-            
-    <div class="container">
-        
-        <div class="col text-center">
-            <div id="errorDiv"></div>
-        </div>
-       
     </div>
 
-    <!--Define a form with method POST hidden values of username and first name-->
+    <div class="container">
+        <div class="col text-center">
+            <!-- Defines the ErrorDiv area -->
+            <div id="errorDiv"></div>
+        </div>
+    </div>
+
+    <!-- Form for submission with hidden values -->
     <form name="qty_form" action="process_form" method="POST">
         <input type="hidden" name="username" id="usernameEntered">
         <input type="hidden" name="fullName" id="fullNameHere">
-        <input type ="hidden" name="storeName" id="storeName">
+        <input type="hidden" name="storeName" id="storeName">
         <input type="hidden" name="type" id="type">
         <h1><span id="top_title"></span></h1>
         <div class="container">
             <div class="row">
-                <!--Rows will by added dynamically-->
+                <!-- Rows will be added dynamically -->
             </div>
         </div>
 
-        <!--Create a centered button for submission-->
+        <!-- Centered button for submission -->
         <footer class="text-center py-4">
             <div class="row">
                 <div class="col">
-                    
+
                 </div>
             </div>
         </footer>
     </form>
-    </body>
+
+    <!-- Percy Image container -->
     <div id="percyImage"></div>
+
+    <!-- Include custom JavaScript file -->
+    <script src="store.js"></script>
 </body>
-<script src="store.js"></script>
+
 </html>

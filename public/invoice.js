@@ -1,11 +1,10 @@
+//Ethan Schwarz (helped and collaborated with Anthony Lee)
 //initializes variables
 let extendedPrices = [];
 let extendedPrice = 0;
 let subtotal = 0;
 let taxAmount = 0;
 let shipping = 0;
-
-
 
 //opens the url params
 let params = (new URL(document.location)).searchParams;
@@ -124,8 +123,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
  
  
 }
-
-
 
 //function to validate the quantity, returns a string if not a number, negative, not an integer, or a combination of both
 //if no errors in quantity, returns empty string
