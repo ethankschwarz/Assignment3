@@ -575,11 +575,3 @@ function generateHTMLInvoice(order) {
   return html;
 }
 
-function test(password1, password2) {
-    //let { salt, hash } = hashPassword(password1);
-    // console.log(`pass1 = ${hash}`);
-    let { salt, hash} = hashPassword(password2);
-    console.log(`pass2 = ${hash}`);
-
-
-}
